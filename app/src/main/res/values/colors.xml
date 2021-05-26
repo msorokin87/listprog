@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black_may">#292734</color>
+    <color name="blue_may">#3b73ad</color>
+    <color name="braun_may">#F55E2C</color>
+    <color name="coffe_may">#c48d74</color>
+    <color name="braunDeep_may">#362321</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="yelow">#FFC107</color>
+    <color name="red">#FF1744</color>
+    <color name="transperent">#00000000</color>
+    <color name="toGroop">#FFB366</color>
+    <color name="toChild">#E1D5E7</color>
+    <color name="colorButtonCreate">#00B300</color>
+</resources>

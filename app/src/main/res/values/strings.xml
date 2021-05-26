@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">ListProg</string>
+    <string name="createList">Создать список</string>
+    <string name="gotovieRecepti">Готовые рецепты</string>
+    <string name="maksim">Список</string>
+    <string name="hello">Мой</string>
+    <string name="search_element">Поиск рецептов</string>
+    <string name="calculator">Калькулятор</string>
+    <string name="gotovoe">Рецепты</string>
+    <string name="descript">Мой список</string>
+    <string name="help">FaQ</string>
+    <string name="about">О Программе</string>
+    <string name="create">Создать</string>
+    <string name="noSeleckted">Не выбрано</string>
+    <string name="safe">Сохранить</string>
+    <string name="added">  Выбрать  </string>
+    <string name="recept">Рецепт</string>
+    <string-array name="Meet">
+        <item>Курица</item>
+        <item>Свинина</item>
+        <item>Говядина</item>
+        <item>Фарш</item>
+
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

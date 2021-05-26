@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="layoutHeader" type="id"></item>
+    <item name="textHello" type="id"></item>
+    <item name="userName" type="id"></item>
+    <item name="imageMenu" type="id"></item>
+</resources>

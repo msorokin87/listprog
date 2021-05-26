@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ListProg" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="android:colorPrimaryDark">@color/black_may</item>
+
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+
+        <item name="colorOnSecondary">@color/braun_may</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorButtonNormal</item>
+        <!-- Customize your theme here. -->
+        <item name="color">@color/braun_may</item>
+        <item name="actionOverflowButtonStyle">@style/MyOverflowButtonStyle</item>
+    </style>
+
+    <style name="MyOverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/baseline_menu</item>
+        <item name="android:tint">#FFFFFFFF</item>
+    </style>
+
+    <style name="RoundedCornerButton" parent="@style/Widget.MaterialComponents.Button.TextButton">
+
+        <item name="background">@drawable/buttoncreate</item>
+        <item name="colorButtonNormal">#0091ea</item>
+        <item name="colorControlHighlight">#1a237e</item>
+    </style>
+</resources>
