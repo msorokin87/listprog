@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black_may"
+    android:id="@+id/relativEx"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Creations">
 
@@ -18,7 +19,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_goneMarginTop="@dimen/_70sdp"
         app:srcCompat="@drawable/arrow_back"
-        app:tint="@color/braun_may"/>
+        app:tint="@color/braun_may"
+        android:layout_marginLeft="@dimen/_6sdp"
+        tools:ignore="VectorDrawableCompat" />
 
     <TextView
         android:layout_width="match_parent"
@@ -44,11 +47,26 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_goneMarginTop="@dimen/_70sdp"
         app:srcCompat="@drawable/close_24"
-        app:tint="@color/red" />
+        app:tint="@color/red"
+        android:layout_alignParentRight="true"
+        tools:ignore="VectorDrawableCompat" />
 
 
-
-
+    <Button
+        android:id="@+id/buttonCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="163dp"
+        android:layout_marginLeft="163dp"
+        android:layout_marginEnd="125dp"
+        android:layout_marginRight="125dp"
+        android:layout_marginBottom="-1dp"
+        android:text="@string/create" />
 
     <RelativeLayout
         android:id="@+id/relativExpandable"

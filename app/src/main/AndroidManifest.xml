@@ -10,7 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ListProg">
-        <activity android:name=".Calculation"></activity>
+        <activity android:name=".Calculation">
+
+        </activity>
         <activity android:name=".Main_menu_activities" />
         <activity android:name=".Recept" />
         <activity

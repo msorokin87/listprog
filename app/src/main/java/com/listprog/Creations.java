@@ -11,13 +11,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
+
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.SimpleExpandableListAdapter;
 import android.widget.Toast;
+
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
@@ -40,8 +41,12 @@ public class Creations extends AppCompatActivity {
     View menuHome;
     View menuMenu;
     View menuDescrip;
+    CheckBox checkboxItem;
+    Button buttonCreate;
 
     MaterialButton imgButtonCreate;
+
+
 
 
     @Override
@@ -54,7 +59,8 @@ public class Creations extends AppCompatActivity {
         ImageView buttonBack = findViewById(R.id.buttonBack);
         ImageView buttonBackClose1 = findViewById(R.id.buttonBackClose1); // кнопка "Закрыть" перекидывает на главную
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        //imgButtonCreate = findViewById(R.id.imgButtonCreate);
+        buttonCreate = findViewById(R.id.buttonCreate);
+        checkboxItem = findViewById(R.id.checkboxItem);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +73,13 @@ public class Creations extends AppCompatActivity {
             public void onClick(View v) {
                 startActivityForResult(new Intent(getApplicationContext(), MainActivity.class),
                         REQUEST_CODE_ADD_NOTE);
+            }
+        });
+
+        buttonCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showResulT();
             }
         });
 
@@ -142,37 +155,83 @@ public class Creations extends AppCompatActivity {
         listDataChild = new HashMap<String, List<String>>();
 
         //Добавляем данные о пунктах списка:
-        listDataHeader.add("Пункт 1");
-        listDataHeader.add("Пункт 2");
-        listDataHeader.add("Пункт 3");
+        listDataHeader.add("Мясо");
+        listDataHeader.add("Рыба");
+        listDataHeader.add("Морепродукты");
+        listDataHeader.add("Чай, кофе");
+        listDataHeader.add("Молоко, масло, яйца");
+        listDataHeader.add("Фрукты");
+        listDataHeader.add("Овощи");
+        listDataHeader.add("Зелень");
+        listDataHeader.add("Крупы, специи");
+        listDataHeader.add("Мучные продукты");
+        listDataHeader.add("Кондитерские изделия");
+        listDataHeader.add("Соки, воды, алкоголь");
 
         //Добавляем данные о подпунктах:
-        List<String> top250 = new ArrayList<String>();
-        top250.add("Подпункт 1.1");
-        top250.add("Подпункт 1.2");
-        top250.add("Подпункт 1.3");
-        top250.add("Подпункт 1.4");
-        top250.add("Подпункт 1.5");
-        top250.add("Подпункт 1.6");
-        top250.add("Подпункт 1.7");
+        List<String> meet = new ArrayList<String>();
+        meet.add("Курица");
+        meet.add("Свинина");
+        meet.add("Говядина");
+        meet.add("Телятина");
+        meet.add("Баранина");
+        meet.add("Крольчатина");
+        meet.add("Мясо");
 
-        List<String> nowShowing = new ArrayList<String>();
-        nowShowing.add("Подпункт 2.1");
-        nowShowing.add("Подпункт 2.2");
-        nowShowing.add("Подпункт 2.3");
-        nowShowing.add("Подпункт 2.4");
-        nowShowing.add("Подпункт 2.5");
-        nowShowing.add("Подпункт 2.6");
+        List<String> feesh = new ArrayList<String>();
+        feesh.add("Горбуша");
+        feesh.add("Кижуч");
+        feesh.add("Кета");
+        feesh.add("Минтай");
+        feesh.add("Икра");
+        feesh.add("Осётр");
+        feesh.add("Палтус");
+        feesh.add("Дорадо");
+        feesh.add("Сёмга");
+        feesh.add("Сибас");
+        feesh.add("Скумбрия");
+        feesh.add("Сом");
+        feesh.add("Судак");
+        feesh.add("Тилапия");
+        feesh.add("Треска");
+        feesh.add("Тунец");
+        feesh.add("Форель");
+        feesh.add("Щука");
+        feesh.add("Рыба");
 
-        List<String> comingSoon = new ArrayList<String>();
-        comingSoon.add("Подпункт 3.1");
-        comingSoon.add("Подпункт 3.2");
-        comingSoon.add("Подпункт 3.3");
-        comingSoon.add("Подпункт 3.4");
-        comingSoon.add("Подпункт 3.5");
+        List<String> seaFood = new ArrayList<String>();
+        seaFood.add("Кальмар");
+        seaFood.add("Мидии");
+        seaFood.add("Молюски");
+        seaFood.add("Морской гребешок");
+        seaFood.add("Осьминог");
+        seaFood.add("Устрицы");
+        seaFood.add("Краб");
+        seaFood.add("Креветки");
+        seaFood.add("Лобстер");
+        seaFood.add("Раки");
+        seaFood.add("Водоросли");
+        seaFood.add("Морская капуста");
+        seaFood.add("Морепродукты");
 
-        listDataChild.put(listDataHeader.get(0), top250);
-        listDataChild.put(listDataHeader.get(1), nowShowing);
-        listDataChild.put(listDataHeader.get(2), comingSoon);
+        listDataChild.put(listDataHeader.get(0), meet);
+        listDataChild.put(listDataHeader.get(1), feesh);
+        listDataChild.put(listDataHeader.get(2), seaFood);
+        listDataChild.put(listDataHeader.get(3), seaFood);
+        listDataChild.put(listDataHeader.get(4), seaFood);
+        listDataChild.put(listDataHeader.get(5), seaFood);
+        listDataChild.put(listDataHeader.get(6), seaFood);
+        listDataChild.put(listDataHeader.get(7), seaFood);
+        listDataChild.put(listDataHeader.get(8), seaFood);
+        listDataChild.put(listDataHeader.get(9), seaFood);
+        listDataChild.put(listDataHeader.get(10), seaFood);
+        listDataChild.put(listDataHeader.get(11), seaFood);
+    }
+
+    private void showResulT() {
+        String message = "Выбранно";
+        if(checkboxItem.isChecked()){
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        }
     }
 }
