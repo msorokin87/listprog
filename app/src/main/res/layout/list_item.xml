@@ -2,12 +2,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/liner_layout"
+    android:orientation="horizontal"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="right"
     android:gravity="right"
     android:layout_height="wrap_content"
     >
-
 
     <TextView
         android:id="@+id/expandedListItem"
@@ -16,20 +16,23 @@
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:textSize="15sp"
+        android:layout_weight="1"
 
         android:background="@drawable/raund_for_item"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="10dp"
         android:paddingBottom="10dp" />
 
-    <CheckBox
-        android:id="@+id/checkboxItem"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="330dp"
-        android:layout_marginLeft="330dp">
+    <ImageButton
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|center"
+        android:background="@drawable/checkbox"
+        android:layout_marginRight="15dp"
 
-    </CheckBox>
+        android:backgroundTint="@color/black_may"
+        />
 
 
 </FrameLayout>

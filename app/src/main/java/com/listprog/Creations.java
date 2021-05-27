@@ -8,15 +8,20 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -24,27 +29,28 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Creations extends AppCompatActivity {
 
-
+    public static final int REQUEST_CODE_ADD_NOTE = 1;
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
-    public static final int REQUEST_CODE_ADD_NOTE = 1;
-
     View menuHome;
     View menuMenu;
     View menuDescrip;
-    CheckBox checkboxItem;
+   //CheckBox checkboxItem;
     Button buttonCreate;
+    TextView expandedListItem;
 
-    MaterialButton imgButtonCreate;
+
+   // MaterialButton imgButtonCreate;
 
 
 
@@ -60,7 +66,8 @@ public class Creations extends AppCompatActivity {
         ImageView buttonBackClose1 = findViewById(R.id.buttonBackClose1); // кнопка "Закрыть" перекидывает на главную
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         buttonCreate = findViewById(R.id.buttonCreate);
-        checkboxItem = findViewById(R.id.checkboxItem);
+        //checkboxItem = findViewById(R.id.checkboxItem);
+        expandedListItem = findViewById(R.id.expandedListItem);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,12 +83,7 @@ public class Creations extends AppCompatActivity {
             }
         });
 
-        buttonCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showResulT();
-            }
-        });
+
 
 //        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 //            @Override
@@ -143,7 +145,44 @@ public class Creations extends AppCompatActivity {
 
         listAdapter = new com.listprog.ExpandableListAdapter(this,listDataHeader,listDataChild);
 
+
+
+
         expListView.setAdapter(listAdapter);
+        //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_MULTIPLE);
+        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            int lastExpPos = -1;
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                if (lastExpPos != -1 && groupPosition != lastExpPos) {
+                    expListView.collapseGroup(lastExpPos);
+                }
+                lastExpPos = groupPosition;
+            }
+        });
+
+        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                String selected = listAdapter.getChild(groupPosition, childPosition).toString();
+                Toast.makeText(getApplicationContext(), selected, Toast.LENGTH_SHORT).show();
+
+
+                return true;
+            }
+        });
+
+
+
+
+
+//        expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                CheckBox chek = checkboxItem[position];
+//            }
+//        });
+
 
         }
     private void prepareListData() {
@@ -228,10 +267,5 @@ public class Creations extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(11), seaFood);
     }
 
-    private void showResulT() {
-        String message = "Выбранно";
-        if(checkboxItem.isChecked()){
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-        }
-    }
+
 }
