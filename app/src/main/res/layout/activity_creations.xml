@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/black_may"
     android:id="@+id/relativEx"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Creations">
 
@@ -50,31 +51,19 @@
         app:layout_goneMarginTop="@dimen/_70sdp"
         app:srcCompat="@drawable/close_24"
         app:tint="@color/red"
+
         android:layout_alignParentRight="true"
         tools:ignore="VectorDrawableCompat" />
 
 
-    <Button
-        android:id="@+id/buttonCreate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="163dp"
-        android:layout_marginLeft="163dp"
-        android:layout_marginEnd="125dp"
-        android:layout_marginRight="125dp"
-        android:layout_marginBottom="-1dp"
-        android:text="@string/create" />
+
 
     <RelativeLayout
         android:id="@+id/relativExpandable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
+
         android:layout_marginBottom="30dp">
 
         <ExpandableListView
@@ -84,6 +73,7 @@
             android:layout_height="wrap_content"
             android:dividerHeight="5dp"
             android:layout_marginTop="5dp"
+
             android:background="@color/black_may">
 
         </ExpandableListView>

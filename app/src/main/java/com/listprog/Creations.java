@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.SparseBooleanArray;
@@ -13,12 +14,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -42,12 +46,14 @@ public class Creations extends AppCompatActivity {
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
 
+
     View menuHome;
     View menuMenu;
     View menuDescrip;
    //CheckBox checkboxItem;
     Button buttonCreate;
     TextView expandedListItem;
+
 
 
    // MaterialButton imgButtonCreate;
@@ -143,43 +149,47 @@ public class Creations extends AppCompatActivity {
 
         prepareListData();
 
-        listAdapter = new com.listprog.ExpandableListAdapter(this,listDataHeader,listDataChild);
+        listAdapter = new MyExpandableListAdapter(this,listDataHeader,listDataChild);
 
 
 
 
         expListView.setAdapter(listAdapter);
         //expListView.setChoiceMode(ExpandableListView.CHOICE_MODE_MULTIPLE);
+//        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//            int lastExpPos = -1;
+//            @Override
+//            public void onGroupExpand(int groupPosition) {
+//                if (lastExpPos != -1 && groupPosition != lastExpPos) {
+//                    expListView.collapseGroup(lastExpPos);
+//                }
+//                lastExpPos = groupPosition;
+//            }
+//        });
+
         expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            int lastExpPos = -1;
             @Override
             public void onGroupExpand(int groupPosition) {
-                if (lastExpPos != -1 && groupPosition != lastExpPos) {
-                    expListView.collapseGroup(lastExpPos);
-                }
-                lastExpPos = groupPosition;
+                Toast.makeText(getBaseContext(), listDataHeader.get(groupPosition), Toast.LENGTH_LONG).show();
             }
         });
-
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                String selected = listAdapter.getChild(groupPosition, childPosition).toString();
-                Toast.makeText(getApplicationContext(), selected, Toast.LENGTH_SHORT).show();
-
-
-                return true;
+            public void onGroupCollapse(int groupPosition) {
+                Toast.makeText(getBaseContext(), listDataHeader.get(groupPosition) + " выыбрано ", Toast.LENGTH_LONG).show();
             }
         });
 
 
 
-
-
-//        expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 //            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                CheckBox chek = checkboxItem[position];
+//            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+//
+//                Toast.makeText(getBaseContext(),
+//                        listDataHeader.get(groupPosition) + " : " + listDataChild.get(listDataHeader.get(groupPosition)).get(childPosition), Toast.LENGTH_SHORT).show();
+//
+//                return false;
 //            }
 //        });
 
@@ -265,7 +275,129 @@ public class Creations extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(9), seaFood);
         listDataChild.put(listDataHeader.get(10), seaFood);
         listDataChild.put(listDataHeader.get(11), seaFood);
+
+
     }
 
 
+
+
 }
+
+ class MyExpandableListAdapter extends BaseExpandableListAdapter {
+
+
+    private Context context;
+    private List<String> listDataHeader;
+    private HashMap<String, List<String>> listDataChild;
+
+
+
+
+    public MyExpandableListAdapter(Context context, List<String> listDataHeader,
+                                 HashMap<String, List<String>> listChildData) {
+
+        this.context = context;
+        this.listDataHeader = listDataHeader;
+        this.listDataChild = listChildData;
+    }
+
+
+
+    @Override
+    public int getGroupCount() {
+        return this.listDataHeader.size();
+    }
+
+    @Override
+    public int getChildrenCount(int groupPosition) {
+        return this.listDataChild.get(this.listDataHeader.get(groupPosition)).size();
+    }
+
+    @Override
+    public Object getGroup(int groupPosition) {
+        return this.listDataHeader.get(groupPosition);
+    }
+
+    @Override
+    public Object getChild(int groupPosition, int childPosition) {
+        return this.listDataChild.get(this.listDataHeader.get(groupPosition)).get(childPosition);
+    }
+
+    @Override
+    public long getGroupId(int groupPosition) {
+        return groupPosition;
+    }
+
+    @Override
+    public long getChildId(int groupPosition, int childPosition) {
+
+        return childPosition;
+    }
+
+    @Override
+    public boolean hasStableIds() {
+        return true;
+    }
+
+    @Override
+    public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
+        String headerTitle = (String) getGroup(groupPosition);
+        if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) this.context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_group, null);
+        }
+
+        TextView lblListHeader = (TextView) convertView
+                .findViewById(R.id.listTitle);
+
+        lblListHeader.setTypeface(null, Typeface.BOLD);
+        lblListHeader.setText(headerTitle);
+
+        return convertView;
+    }
+
+    @Override
+    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+        final String childText = (String) getChild(groupPosition, childPosition);
+
+        if (convertView == null) {
+            LayoutInflater infalInflater = (LayoutInflater) this.context
+                    .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = infalInflater.inflate(R.layout.list_item, null);
+        }
+
+        ImageButton check = convertView.findViewById(R.id.checkbox);
+
+          check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List <String> array = new ArrayList<String>();
+
+                //List <String> child = listDataChild.get(listDataHeader.get(groupPosition));
+                String selected = getChild(groupPosition, childPosition).toString();
+                Toast.makeText(context, selected, Toast.LENGTH_SHORT).show();
+                array.add(selected);
+                StringBuilder builder = new StringBuilder();
+
+
+            }
+
+        });
+
+
+        TextView txtListChild = (TextView) convertView
+                .findViewById(R.id.expandedListItem);
+
+        txtListChild.setText(childText);
+        return convertView;
+    }
+
+    @Override
+    public boolean isChildSelectable(int groupPosition, int childPosition) {
+        return true;
+    }
+}
+
+

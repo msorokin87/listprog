@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_gravity="right"
     android:gravity="right"
+
     android:layout_height="wrap_content"
     >
 
@@ -18,10 +19,11 @@
         android:textSize="15sp"
         android:layout_weight="1"
 
+
         android:background="@drawable/raund_for_item"
         android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp" />
+        android:paddingBottom="10dp" ></TextView>
 
     <ImageButton
         android:id="@+id/checkbox"
@@ -31,8 +33,9 @@
         android:background="@drawable/checkbox"
         android:layout_marginRight="15dp"
 
+
         android:backgroundTint="@color/black_may"
-        />
+        ></ImageButton>
 
 
 </FrameLayout>
