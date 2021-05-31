@@ -1,85 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:background="@color/black_may"
-    android:id="@+id/relativEx"
+    tools:context=".Creations"
 
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Creations">
-
-
-
-    <ImageView
-        android:id="@+id/buttonBack"
-
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
-        android:layout_marginStart="@dimen/_6sdp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_goneMarginTop="@dimen/_70sdp"
-        app:srcCompat="@drawable/arrow_back"
-        app:tint="@color/braun_may"
-        android:layout_marginLeft="@dimen/_6sdp"
-        tools:ignore="VectorDrawableCompat" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:padding="8dp"
-
-        android:fontFamily="@font/nanumothic"
-        android:gravity="center"
-        android:text="@string/create"
-
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonBack"
-        app:layout_constraintLeft_toRightOf="@+id/buttonBack"
-        app:layout_constraintTop_toTopOf="@+id/buttonBack" />
-
-    <ImageView
-        android:id="@+id/buttonBackClose1"
-        android:layout_width="@dimen/_20sdp"
-        android:layout_height="@dimen/_20sdp"
-        android:contentDescription="@string/app_name"
-        android:layout_alignParentEnd="true"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_goneMarginTop="@dimen/_70sdp"
-        app:srcCompat="@drawable/close_24"
-        app:tint="@color/red"
-
-        android:layout_alignParentRight="true"
-        tools:ignore="VectorDrawableCompat" />
-
-
-
-
-    <RelativeLayout
-        android:id="@+id/relativExpandable"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-
-        android:layout_marginBottom="30dp">
+    >
 
         <ExpandableListView
             android:id="@+id/expandableListView"
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:dividerHeight="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:paddingTop="15dp"
+            android:layoutDirection="rtl"
 
-            android:background="@color/black_may">
+            />
 
-        </ExpandableListView>
-    </RelativeLayout>
 
-</RelativeLayout>
+    </LinearLayout>
+
+
 
 
 
