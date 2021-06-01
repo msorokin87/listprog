@@ -1,44 +1,22 @@
 package com.listprog;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
-import android.util.SparseBooleanArray;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
-
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Creations extends AppCompatActivity {
 
@@ -47,6 +25,9 @@ public class Creations extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    TextView textView;
+    private String arrayList;
+    CheckBox checkBox1;
 
 
 //    View menuHome;
@@ -144,7 +125,7 @@ public class Creations extends AppCompatActivity {
 //                        REQUEST_CODE_ADD_NOTE);
 //            }
 //        }); // кнопка перекидывает на вкладку "Калькулятор"
-
+        checkBox1 = findViewById(R.id.checkBox1);
 
         expListView = findViewById(R.id.expandableListView);
 
@@ -152,42 +133,45 @@ public class Creations extends AppCompatActivity {
 
         listAdapter = new com.listprog.ExpandableListAdapter(this, listDataHeader, listDataChild);
 
-        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-
-            @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-                // Toast.makeText(getApplicationContext(),
-                // "Group Clicked " + listDataHeader.get(groupPosition),
-                // Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        listDataHeader.get(groupPosition) + " Expanded",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-                Toast.makeText(getApplicationContext(),
-                        listDataHeader.get(groupPosition) + " Collapsed",
-                        Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+//
+//            @Override
+//            public boolean onGroupClick(ExpandableListView parent, View v,
+//                                        int groupPosition, long id) {
+//                // Toast.makeText(getApplicationContext(),
+//                // "Group Clicked " + listDataHeader.get(groupPosition),
+//                // Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        });
+//        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+//
+//            @Override
+//            public void onGroupExpand(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        listDataHeader.get(groupPosition) + " Expanded",
+//                        Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
+//
+//            @Override
+//            public void onGroupCollapse(int groupPosition) {
+//                Toast.makeText(getApplicationContext(),
+//                        listDataHeader.get(groupPosition) + " Collapsed",
+//                        Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
         expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+
+
 
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                // TODO Auto-generated method stub
+
+                 arrayList = expListView.getItemAtPosition(childPosition).toString();
                 Toast.makeText(
                         getApplicationContext(),
                         listDataHeader.get(groupPosition)
@@ -201,10 +185,14 @@ public class Creations extends AppCompatActivity {
         });
 
 
+
         // Listview on child click listener
 
         expListView.setAdapter(listAdapter);
        // expListView.setIndicatorBoundsRelative(170, 200);
+
+
+
 
 
     }
@@ -293,6 +281,12 @@ public class Creations extends AppCompatActivity {
 
     }
 
+    public void create(View view) {
+        Intent intent = new Intent(Creations.this, Main_menu_activities.class);
+        intent.putExtra("arraylist", arrayList);
+        startActivity(intent);
+
+    }
 }
 
 

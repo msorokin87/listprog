@@ -9,9 +9,19 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main_menu_activities extends AppCompatActivity {
     public static final int REQUEST_CODE_ADD_NOTE = 1;
@@ -19,11 +29,13 @@ public class Main_menu_activities extends AppCompatActivity {
     View menuMenu;
     View menuDescrip;
 
+
     @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_menu_activities);
+        Creations creations = new Creations();
 
         menuHome = findViewById(R.id.menuHome); // калькулятор
         menuMenu = findViewById(R.id.menuMenu); // рецепты
@@ -95,7 +107,16 @@ public class Main_menu_activities extends AppCompatActivity {
                         REQUEST_CODE_ADD_NOTE);
             }
         }); // кнопка перекидывает на вкладку "Рецепты"
+
+
+
     }
+
+
+
+
+
+
 
     public void buttonCreat(View view) {
         Intent intent = new Intent(this, Creations.class);

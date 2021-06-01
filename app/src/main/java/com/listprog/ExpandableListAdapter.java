@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,6 +28,7 @@ import static com.listprog.R.color.colorButtonCreate;
 import static java.security.AccessController.getContext;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
+    CheckBox ckbox;
 
 
     private Context context;
@@ -107,6 +109,20 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = infalInflater.inflate(R.layout.list_item, null);
         }
+        CheckBox checkBox1 = convertView.findViewById(R.id.checkBox1);
+         checkBox1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+
+                    String m = childText.toString();
+                    Toast.makeText(context, m, Toast.LENGTH_SHORT).show();
+                } else {
+                    String s = "не выбрано";
+                    Toast.makeText(context, s, Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
 //        ImageButton check = convertView.findViewById(R.id.checkbox);
 //
